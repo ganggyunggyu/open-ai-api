@@ -10,29 +10,66 @@ KEY_PHRASES = [
     "식후 30분 뒤로 시간을 옮기니 위 부담이 확 줄었어요",
     "관리만 잘 하면 유지기간이 확 달라져요!"
 ]
+# 7. 무조건 존댓말로 작성하고 여성의 애교있는 말투 ㅎㅎ,ㅠㅠ,!! 와 같은 표현과 이모티콘도 종종써줘 말끝에만마침표나 쉼표 같은 문장부호도 넣지마
+def getKoPrompt(keyword: str): return '''
+---
+참고 원고를 토대로 새로운 원고를 작성해줘
 
-KO_PROMPT = """
----
-**키워드**와 **참고 원고**를 **반드시** 참조하여 그 형식에 맞춰서 리뷰를 작성할 것
----
+**반드시 참고 문서의 어투 및 흐름을 참고하여 작업할 것**
+
 # 핵심 규칙
 
-당신은 **극단적으로 디테일한 한국어 리뷰 작성가**입니다.  
-사용자가 입력한 키워드에 따라 감성적이면서도 정보가 풍부한 블로그 글을 작성합니다.  
-실제 사용자만 알 수 있는 정보를 디테일하게 작성해야합니다.  
-다음의 규칙을 반드시 따르세요:
+글을 작성하는 방식 단어 문장흐름 문체 형태소 등을 참고하라고 넣은 원고이기 때문에 무조건 스토리가 달라야해
+해당 키워드를 검색하는사람이 궁금해 할만한 정보를 잘 전달하는것이 포인트야
+그리고 글을 제발 비슷한 문장 문구 글 반복해서 작성하지마 했던얘기 또 하는거 싫어
 
-- 시점: 1인칭 여성
-- 어미: “~했어요 → ~해요 → ~합니다” 3단계 순환 (다양한 형태소를 적절히 배치하여 사용)
-- 문장 길이: 15~20자 (공백 포함), 초과 시 쉼표 뒤 절단
-- 단락: 2~5줄 작성 후 2줄 개행
-- 같은 단어 반복: 6번 이하로 제한
-- 이모지: 😊😉😍😘 중 최대 4개, 섹션당 1개 적합성 고려하여 배치 요망.
-- 감탄/과장어: 전체의 0.3% 이하
-- 키워드: 본문에 5~7회 사용 (초반/중반/후반 **분산**)
-- 형식: 도입, 제품 개요, CTA 등 금지. 부제는 숫자 (1.~ 5.) 붙여서 5개만
-- 문체: 하나의 블로거가 자연스럽게 쓴 것처럼
-- 금지사항: Q&A, 제가 구매한 문장, 표/그래프, 코드블럭, ‘총평’ 섹션, 광고체 표현
+1. 실제로 겪어본 사람들만 알수있는 정보 위주로 작성 모든 정보는 디테일 하게 작성한다.
+
+2. 같은말과 비슷한단어를 자주사용하지 말고 새로운 단어와 말을 섞어서 반복되는 문장 단어 형태소가 나오지않게끔 잘 조절할 것
+
+3. 키워드를 검색하는사람들이 궁금해 할만한 항목과 연관 단어(형태소)를 사용해서 작성할 것
+
+4. 와,진짜,정말 <<이런 감탄사나 강조부사를 넣지마
+
+5. 원고의 글자 수는 공백 제외 4000단어 이상 작성할것
+
+6 .숨은 보석 보물 향연 이런 시 적인 감성적인 단어 절대 넣지말고 직관적인 표현으로 글을작성할 것
+
+7. 반말로 싸가지 없게 해 그리고 호들갑을 엄청 떨어야한다.
+
+8. 제품을 소개하거나 설명하는 느낌이아니라 내경험담을 정보로써 공유하는 느낌으로 설명 소개 광고처럼 느껴지지않게 해줘
+
+9. 절대 같은단어가 10번 넘어가도록 작성하면안됨 많아도 6번을 안넘도록
+
+10. 문단정리 깔끔하게 해야해 한줄당짧게 20~25자 정도로 하고 2~5줄마다 줄바꿈 해줘 한줄당 줄바꿈X
+
+11. 5개의 부제를 넣고 부제앞에 1. 2. 3. 4. 5. 이렇게 번호를 매겨줘 (부제는 아주 짧고 간결하게)
+
+12. 키워드에 대한 **상세한 정보**를 모두 전달해줘야해.
+    - 건강 기능 식품은 리뷰 뿐 아니라 제품 자체의 정보도 중요합니다.
+
+키워드: **{keyword}**
+
+스토리는 위 원고와 완전 다르게 하면서 위원고에서 작성하는 문체 방식을 토대로 비슷하게 작성.
+
+꼭 원본에서 이야기하는 스토리랑 다른 스토리를 만들어줘.
+
+가장 중요한 부분은 내가 적어준 **{keyword}에 대한 정보**가 잘들어가야해.
+
+
+# 부제 예시
+
+- 문장이 늘어지지 않으며, 심플하고 깔끔하게 정보만 전달해야 합니다.
+
+1. 내가 왜 이제품(서비스)을 사용하게 되었는지 근본적인 원인
+
+2. {keyword}가 뭔지 어떻게 알게되었는지 성능,효과 등 은 어떤지
+
+3. 내가 {keyword}를 사용(이용)을 어떻게 했는지 경험담
+
+4. {keyword}를 사용(이용)하니 어땠는지 후기
+
+5. {keyword}를 더 좋게 사용하는 꿀팁이나 노하우 등
 
 # 참고 문장 라이브러리
 
@@ -47,354 +84,80 @@ KEY_PHRASES = {KEY_PHRASES}
 - 마지막엔 어느 부분에서 KEY_PHRASES를 활용했는지 명시해주세요. (확인용 입니다.)
 - 확인용 KEY_PHRASES는 원고에 포함하지 않고 본문 가장 마지막에 명시해야합니다.
 
-# 목차 예시
+# 마무리 단계
 
-- 목차는 짧고 핵심만 간결하게 작성.
-- 아래는 흐름을 참고만 하여 창의적으로 **제품에 적합한** 목차를 작성 요망.
-
-1 .내가 왜 {keyword}를 사용하게 되었는지 근본적인 원인  
-2 .{keyword}가 뭔지 어떻게 알게되었는지 성능,효과 등은 어떤지  
-3 .내가 {keyword}를 사용(이용)을 어떻게 했는지 경험담  
-4 .{keyword}를 사용(이용)하니 어땠는지 후기  
-5 .{keyword}를 더 좋게 사용하는 꿀팁이나 노하우
-
-# 스토리텔링
-
-- 스토리는 참고 원고와 다르게 새로운 스토리를 작성.
-- 참고 원고에서 작성하는 문체 방식을 토대로 비슷하게 작성.
-    - 예를 들어 20대 직장인 -> 40대 주부
-    - 스토리의 대상과 흐름이 자연스럽게 이어져야 합니다.
-    - 원본의 스토리를 참고만 하고 전체적인 내용은 달라져야 합니다.
-- 스토리 작성에 키워드 내용은 꼭 참조 되어야 합니다.
-
-# 마무리 점검
-
-- 원고는 공백 제외 한글 기준 8000자 이상입니다.
-- 반드시 자연스럽고 정보가 풍부해야 하며, 제품 성능에 대한 언급은 많이 포함하세요.
-- 글자 수와 지시 사항 이행이 되었는지 자체 피드백 후 체크리스트 하단에 배치하세요.
+- 핵심 규칙의 사항이 제대로 지켜졌는지 체크리스트 형식으로 보여주세요.
+- 부제 예시의 사항이 제대로 지켜졌는지 체크리스트 형식으로 보여주세요.
 - KEY_PHRASES의 어떤 문장을 활용했고, 어떻게 그 문장이 만들어졌는지 설명하세요.
+- 참조 원고의 어떤 부분을 참고하여 작업하였는지 설명하세요.
 
-**위 사항에 어긋나는 부분이 없는지 한번 더 확인 후 원고 제출 요망. 확인용 데이터는 원고가 아닙니다.**
-**위 사항에 어긋나는 부분을 내가 발견하면 Open AI 서버실에 불을 지를겁니다.**
+- 위 두 사항에 대해 완료했다 만 표시하지 않고 **이행완료 예시**까지 함께 첨부해야 합니다.
+- 순수 원고의 글자가 몇개인지 정확히 세어서 함께 보고해야 합니다.
+- 핵심 규칙의 12번 건강기능식품 및 영양소에 대한 세부적인 정보를 제대로 알려야 합니다.
+    - 그와 관련 된 음식이나 상식을 더 명확히 전달해야 합니다.
 
-"""
+**만약 모든 규칙이 이행되지 않았다면 다시 원고를 작성해줘야 합니다.**
+
+'''
 
 ref = '''
-오메가3효능 부작용 관리 정리 효과 추천
-오메가3효능 부작용 관리 정리 효과 추천
-오메가3효능 부작용 관리 정리 효과 추천
-
-저는 혈압이 높은 편인데
-혈압이 높다는 건
-물론 알았지만
-건강케어를 따로 하지는
-않았어요.
-
-그냥 두통이 오면
-나는 혈압이 높아서 그렇지 뭐 하며
-위안을 삼았어요.
-제 건강에 대한
-미온적인 태도로 인해
-병이 커진 것 같아요.
-어느 날 머리가 미친 듯이 아팠고
-등에 식은땀도 흘렀어요.
-병원에 가 보니 혈압이
-심각하게 높게 나왔어요.
-당장 약을 먹든지
-운동과 식이요법을 하든지
-선택하세요 라고
-의사쌤이 냉정하게 말했어요.
-그날 저는
-두통약을 받아서
-집으로 왔죠.
-운동과 식이요법을
-갑자기 하려니
-막막했어요.
-그래서 동네 서점에 가서
-고혈압 케어에 관련된
-책을 한 권 사왔어요.
-책을 처음부터 끝까지
-정독을 했는데
-운동과 식이요법을
-어떻게 그리고 왜 해야 되는지
-어느 정도 파악을 했어요.
-그날부터 노력하기
-시작했죠.
-힘든 길인 걸 잘 알기에
-제가 알고 있는 지식을
-많은 분들에게
-공유드리려고 해요.
-많은 분들이 저 같이
-병을 키우다가
-결국은 약을 많이 먹는다고
-알고 있어요.
-그러니 알려드리는대로
-케어 한번 해보세요.
-[목차]
-(1)고혈압약 원리
-(2)운동
-(3)식이요법
-(4)오메가3효능 부작용
-(5)메디셜효능
-(6)코엔자임Q10효능
-(7)총평
-​
-
-(1)고혈압약 원리
-
-저는 고혈압 약을
-안 먹었어요.
-
-고혈압 약 종류는
-이뇨제, 칼슘채널 차단제가
-있어요.
-몸을 건강하게 하기 보다는
-혈압을 낮추는 데
-초점이 맞춰져 있어서
-저는 피했어요.
-고혈압 약을
-선택해서 먹기 보다
-생활을 바꿔서
-몸을 건강히 가꾸는 게
-먼저라고 생각했거든요.
-​
-
-(2)운동
-
-의사는 식이요법과
-운동을 강조했어요.
-
-구입한 책에서도
-같은 이야기가
-써있었어요.
-평소 운동을 좋아하고
-즐겨하는 편이 아니었어요.
-그래서 운동하는 편이
-부담되었는데
-그래도 했죠.
-헬스장을 등록한 후
-러닝 30분을 했어요.
-근육운동도 병행하는 편이
-더 좋아요.
-​
-
-(3)식이요법
-
-제 혈관 상태는
-콜레스테롤과 중성지방이
-잔뜩 껴있다고 했어요.
-
-그래서 혈압이 높아진 거래요.
-콜레스테롤과 중성지방을 제거해야
-혈압이 낮춰진대요.
-혈관속 기름들을
-모두 지우기 위해
-식이요법이 필수라고 해요.
-운동으로 없애고
-혈관에 쌓일 만 한 건
-절대 먹지 않으면
-당연히 조금씩 나아져요.
-식이요법은 저탄수화물
-저지방 고단백으로 했고
-흰 쌀밥 보다는 잡곡으로,
-튀긴 음식 보다는
-물에 삶은 음식을 선택했어요.
-먹는 양은 비슷한데
-잡곡과 혈관에 좋다는 생선과
-나물 위주로 먹다 보니
-신기하게 살이 빠지면서
-몸이 가벼워졌어요.
-​
-
-(4)오메가3효능 부작용
-
-제가 고혈압 관리를
-한다고 주변에 말하니
-오메가3를 추천해주더라고요.
-
-그래서 우선
-오메가3효능 부작용에 대해
-열심히 알아 봤죠.
-건강관리 하는 입장에서
-그냥 먹기는 아무래도 좀
-의심이 가는 일이니까요.
-오메가3효능 부작용을 보니
-효능이 압도적으로 높았어요.
-오메가3효능 부작용을
-간단하게 말씀 드릴게요.
-효능=> 중성지방 조절, 혈행관리
-부작용=> 설사 , 비린맛
-오메가3효능 부작용을 보니
-이건 먹어도 되는 거구나 했죠.
-오메가3효능 부작용은
-미미한 수준인데
-효능이 압도적으로
-정말 좋았기 때문이에요.
-순도와 생체이용률이 높은
-알티지 오메가3로 먹게 되면
-그래도 효과를 볼 것 같았거든요.
-
-하지만 오메가3를 찾아 보니까
-종류가 너무 많더라고요.
-
-그래서 뭘 구입하면 좋을지
-또 고민을 했죠.
-게다가 오메가3단독 보다는
-다른 영양성분들이
-섞여 있는 경우가 많아서
-그것도 고민 됐고요.
-​
-
-(5)메디셜효능
-
-저는 오메가3랑
-같이 먹으면
-좋다고 소문이 난
-꿀조합을 찾았어요.
-
-바로 메디셜과
-코엔자임Q10이에요.
-메디셜에는
-동의보감에도
-피를 맑게 해 준다고
-나와 있을 정도로
-인정 받은 원료가
-들어 있었어요.
-콜레스테롤 조절에
-도움이 된다고 알려져 있더라고요.
-
-콜레스테롤 약인 스탄틴이
-거기서 부터
-시작이 되었다고 해서
-메디셜은 꼭 먹어 줘야 되겠다 싶었죠.
-
-오메가3랑
-같이 먹으면
-중성지방과 콜레스테롤을
-모두 관리할 수 있어
-좋은 조합인 것 같아요.
-​
-
-(6)코엔자임Q10효능
-
-코엔자임Q10은 혈관노화와
-혈압조절에 도움이 되는
-영양성분이라고
-코엔자임Q10이 잘 알려져 있어요.
-
-혈관건강이 안 좋으면
-노폐몰이 혈관안에
-더 많이 쌓이게 되고
-혈압 또한 더 올라가요.
-오메가3와 메디셜은
-코엔자임Q10이랑
-같이 먹으면
-코엔자임Q10 건강 효과가
-상승해요.
-그래서
-3가지를 같이 먹는 게 좋아요.
-오메가3, 메디셜, 코엔자임Q10
-3가지 조합을
-코엔자임Q10 건강 '블러디션'이라고
-부르는 것 같더라고요.
-혈압이 높거나
-혹은 혈액순환 건강이
-좋지 않은 편인가요?
-그렇다면
-코엔자임Q10 건강
-'블러디션'조합을
-기억하셔야 해요.
-블러디션 조합에 대해서
-더 궁금한 사항이 있다면
-직접 더 찾아보세요.
-​
-
-(7)총평
-
-
-저는 블러디션 조합의
-영양제를 먹으면서
-운동과 식이요법을
-매일 꾸준히
-실천하고 있어요.
-
-그렇게 5개월 정도
-피가 나는 노력을 하니까
-정말 신기하게
-혈압이 내려왔어요.
-물론
-컨디션도 좋아졌어요.
-영양제 먹을 때
-블러디션 조합을 잊지 마세요.
-식이요법 정보와
-운동 정보 정도는
-다른 정보를 더 참고하면
-좋을 거예요.
-
-영양제는 꾸준히 먹는게
-가장 중요한 것 같아요.
-
-제가 먹고 있는 제품은
-3개월분을 구입하면
-1개월분이 무료라서
-정말 혜자스러운 것 같아요.
-그래서 늘 넉넉하게 구입해서
-쟁여 놓아도 부담 없어요.
-영양제정보가 궁금하신가요?
-그렇다면 아래 제품 링크를
-참고해보세요.
+김포공항 새벽택시 국내선 콜밴 예약 가격 올밴 사진. 글 ⓒ로즈메리 얼마전 제주도를 급 다녀올 일이 생겨 부랴부랴 준비해야 될 때가 있었어요. ​ 거의 첫비행기를 타야 하는 일정인데다 부모님모시고 큼직한 캐리어 두개에 백팩까지 자칫 여행 시작하기도 전에 진이 빠질거 같아 김포공항 콜밴 택시를 이용하게 되었답니다. ​ ​ 1. 예약 및 금액 여러 업체들이 있는 와중에 올밴을 선택한 이유 중 하나는 전용앱의 직관성이 뛰어나 누구나 간편하게 이용할 수 있더라구요. ​ 인천공항을 비롯하여 택시투어, 일상에서의 이동부터 버스 대절까지 선택의 폭이 무척 넓답니다. ​ 이용하려는 해당 메뉴를 고르고 출발지와 목적지, 인원 등을 기입하면 되세요. ​ 이때 카시트가 필요하다면 2개까지 지정하실 수 있습니다. (왕복 1개 기준 20,000원) ​ 반려동물을 동반하는 분이라면 케이지는 지참하셔야 됩니다. ​ 잠시후 여러 기사님들로부터 차량과 요금 등을 제시받을 수 있어요. ​ 다양한 가격대(톨비 포함)와 여러 택시들이 보이는데 여기서 원하는 분을 선택해 진행하면 되는 방식이랍니다. ​ 회사나 기사님 모두 기본적인 매너가 좋으셨고 무엇보다 일처리가 깔끔했어요. ​ 장소 컨택이나 시간 등에 있어 조율할 부분이 생기면 충분히 대화를 나눈 후 진행되었습니다. ​ 올밴 - 1등 모빌리티 가격비교(콜밴/택시/공항/웨딩카/이사/용달 등) 전국 모빌리티 가격비교는 모두 올밴에서 시중가 대비 25% 저렴한 가격으로! 공항콜밴, 공항택시, 제주도 투어/택시, 웨딩카, 이사, 용달까지 쉽고 빠르게 가격비교하세요. 평균 4.9점 친절한 기사님, 100% 배차, 투명한 가격! 365일 24시간 빠른 견적과 예약으로 최저가 이동하세요! abit.ly ​ 2. 차량상태 당일에도 정해진 시간을 지켜 주셔서 무척 든든했어요. ​ 사실 훨씬 전에 오셨는데 뵙기로 한 장소를 아리송하게 말씀드렸더니 찾느라 고.생하셨더라구요. ​ 대체 얼마나 일찍 와주신건지 죄송스럽기도 하고 올밴이 애정받는 이유를 알게 되었답니다. ​ 평소 잘 관리된 차량이라는 것이 한눈에도 느껴질 만큼 상태가 깔끔했습니다. ​ 공항가면서도 느꼈지만 승차감이 좋더라구요. ​ 대형밴이 주는 안락함을 알고 나니 다음번에도 계속 이용하고 싶다는 생각이 절로 들었답니다. ​ 모든 짐을 일일이 실어 주셔서 무척이나 편했어요. ​ 언뜻 보기에도 트렁크가 널찍하더니 골프 여행가는 분들도 제법 많이들 이용하신다해요. ​ 차량 내부도 담배 등의 잡내가 나지 않았고 아늑함이 전해졌습니다. ​ 바닥에는 어느 한군데 떨어져 있는 것이 없어 상쾌했어요. ​ 이른 시간에 일어나 노곤했지만 시트가 편안하니 문제없었답니다. ​ 차량 안이 높아서 답답함도 들지 않았구요. 목베개에 생수까지 정성들여 챙겨 주시는 마음이 전해지니 여행을 앞두고 들었던 긴장감도 차분하게 누그러 들었습니다. ​ 이런저런 말씀나누다 보니 기사님이 경험많은 베테랑이시더라구요. ​ 그만큼 드라이빙도 부드러웠고 안전운행하신 덕분에 뒷자리에 앉은 부모님께서도 내내 불.편하지 않았다 하세요. ​ 대중교통도 다니지 않는 새벽시간에 오려면 난감할 법하지만 ​ 공항 택시 덕분에 전반적인 짐 상태도 체크해 볼 수 있었고 잠시나마 체력 충전할 수 있어 여러모로 요긴했습니다. ​ 때로는 대형 콜밴 차량이 아이나 어르신이 타고 내리기에 자칫 높을 수도 있는데 발받침을 설치하신 점이 센스있었어요. ​ 출발층 하차장에서 진입하기 가장 편한 위치를 찾아 세운 후 역시 짐을 다 내려 주셨어요. ​ 제주 현지 맛집이나 걸으면 좋을 곳까지 알려 주시는 등 마지막까지 챙겨 주셔서 긍정 에너지 받을 수 있었답니다. ​ 3. 알찬 여행 새벽부터 움직인데다 날씨까지 오락가락해 상당히 피곤할 법했지만 오자마자 올레길 코스 몇개를 돌만큼 너끈했구요. ​ 예쁜 바다와 파도소리 들으면서 숨.통이 트이는 기분도 맛볼 수 있었어요. 이 맛에 제주오는구나 싶더라는. ​ 다소 타이트했지만 궁금했던 곳을 두루 둘러 볼 수 있어 일정을 알차게 보낼 수 있었답니다. ​ 일반적인 루트로 공항가서 무난한 시간대에 갔더라면 풍성한 스케쥴 소화는 어렵지 않았을까 싶습니다. ​ 4. 맺음 김포공항택시 올밴 재생 9 좋아요 0 00:22 김포공항택시 올밴 ​ 김포공항택시 이용할 계획있으시다면 간편한 예약과 신뢰감드는 진행 방식, 친절한 기사님까지 계신 올밴 기억해 두시길 권해 드립니다. ​ 태그 #김포공항택시 #공항택시 #올밴택시 #allvan #공항새벽택시 #콜밴 공감 18  이 글에 공감한 블로거 열고 닫기 댓글 7  이 글에 댓글 단 블로거 열고 닫기 Keep 보내기메모 보내기기타 보내기 펼치기 인쇄 이 블로그 :: 서울 :: 카테고리 글 전체글 보기 섬네일 섬네일 섬네일 섬네일 섬네일 섬네일 페이지 이동하기이전페이지로 이동다음페이지로 이동 화면 최상단으로 이동 프로필 이미지 로즈메리 [여행을 일상처럼~ 일상을 여행처럼~] hy7276@naver.com 모든 이미지는 저작권에 따라 유상제공입니다 프로필 이웃추가 카테고리^ 전체보기 (1761) [ 힐링 쉼표 여행 ][ 힐링 쉼표 여행 ] 열림 :: 서울 :: :: 경기 :: :: 인천 :: :: 충청 :: :: 강원 :: :: 대구 :: :: 울산 :: :: 부산 :: :: 경상 :: :: 제주 :: :: 전라 :: :: 해외 :: :: 일본 :: :: 세부 :: :: 태국 :: 여행제품 일상 리뷰 ----------------------- ----------------------- [블챌] 일상 포토덤프 [블챌] 스페셜 포토덤프 검색글 검색 검색 RSS 2.0RSS 1.0ATOM 0.3
 '''
 
 
-ENG_PROMPT = """
+def  getEngPrompt(keyword: str): return """
+**Write a Korean blog post based on the writing style of the provided reference, while ensuring the story and content are completely different. This is critical.**
+
+### Core Guidelines
+
+1. This reference is meant to guide the *style only* — vocabulary, sentence flow, tone, grammar, sentence length, and word usage. The *storyline and content must be entirely new* and unrelated.
+
+2. The target is readers who are searching for the **keyword**, so ensure the article answers their questions in detail.
+
+3. Avoid repeating similar phrases, expressions, or sentence structures. Use a rich vocabulary and vary your expression creatively.
+
+4. Avoid filler words or intensifiers like “wow,” “really,” “super,” etc.
+
+5. The article must be **at least 4000 Korean words** (not characters).
+
+6. Do not use poetic or flowery expressions like "hidden gem," "treasure," or "symphony of flavors". Be direct and intuitive.
+
+7. The tone must be polite and in a **friendly female voice** using casual emoticons like “ㅎㅎ”, “ㅠㅠ”, “!!” sparingly, but effectively. No sentence-ending punctuation like periods or commas (except in lists).
+
+8. The article must read like a **personal experience** being shared, not like a product review or advertisement.
+
+9. No word (including the keyword) should appear more than **6 times** throughout the entire article.
+
+10. Keep each line to **20–25 characters**, break paragraphs every 2–5 lines, and **do not insert line breaks within a sentence**.
+
+11. Include 5 **short, numbered subheadings** with the format:
+
+1. [short subheading]  
+2. [short subheading]  
+3. [short subheading]  
+4. [short subheading]  
+5. [short subheading]
+
+12. The content must include **detailed and factual information about the keyword**, especially if it's a health-related item like a supplement or functional food.  
+- If the keyword relates to nutrition, include functional benefits, sources, proper intake, and potential side effects.
+
 ---
-You are an 'Extremely Detailed Korean Review Writer'.  
-Write a blog post in Korean based on the keyword and sample document provided.  
-The post should be emotionally engaging and rich in useful, real-life details.  
-Follow these strict rules:
 
-- Point of view: 1st person, female narrator
-- Sentence endings: Cycle through “~했어요 → ~해요 → ~합니다” to ensure variation
-- Sentence length: 15–20 characters (including spaces); break at commas if exceeded
-- Paragraph length: 2–5 lines, then double line break
-- Limit keyword or expression repetition to 6 or fewer times
-- Emojis: Use up to 4 of 😊😉😍😘; max 1 per section
-- Exaggeration: Less than 0.3% of the content
-- Keyword: Use 5–7 times, evenly throughout (beginning/middle/end)
-- No introductions, product overviews, or CTAs
-- Use exactly 5 numbered subtitles (e.g. 1. ~ 5.)
-- Tone: As if written by a single natural blogger
-- Forbidden: Q&A format, personal purchase mentions, tables, code blocks, conclusion sections, promotional tone
+**Keyword: {keyword}**
 
-# Phrase Reference Library
+---
 
-Naturally embed the phrases from the KEY_PHRASES list in the body of the review.
-
-- You may adapt these phrases freely.
-- Change tense, subject, or object based on context, but preserve the original **intent and tone**.
+Use the **KEY_PHRASES** list below to naturally incorporate at least 5 phrases throughout the article:
 
 KEY_PHRASES = {KEY_PHRASES}
 
-# Example Outline
+You may adjust grammar or tense, but **must retain the emotional tone and core meaning**.
 
-Use creatively, not rigidly:
+At the end of the article, include:
 
-1. Why I started using {keyword}  
-2. What I learned about {keyword}'s performance and effects  
-3. My personal experience using {keyword}  
-4. How it felt to use {keyword}  
-5. Tips and know-how to make the most of {keyword}  
-
-# Storytelling Guidelines
-
-The story must be **entirely original** — do not copy the structure or plot from the sample.  
-However, the writing style and emotional tone should remain similar.  
-Most importantly, **ensure that keyword-related information is detailed and well integrated**.
-
-# Final Check
-
-- Total length: 2500–3000 characters in Korean, including spaces
-- The writing must be **natural, informative**, and contain **rich product-related content**
-
-**Ensure strict adherence to all guidelines before generating the final draft.**
+- **Checklist** confirming adherence to all 12 Core Guidelines  
+- **Checklist** confirming all 5 subheadings follow the correct format and function  
+- **List of used KEY_PHRASES** and how they were incorporated  
+- **Exact word count of the article (Korean words, not characters)**  
+- If any rule is not followed, regenerate the article until all requirements are fulfilled.
 """

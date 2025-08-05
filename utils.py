@@ -4,7 +4,8 @@ import os
 def validate_api_key(service: str) -> Union[str, None]:
     env_key = {
         "gpt": "OPENAI_API_KEY",
-        "claude": "ANTHROPIC_API_KEY"
+        "claude": "ANTHROPIC_API_KEY",        
+        "solar": "UPSTAGE_API_KEY",
     }.get(service)
     
     api_key = os.getenv(env_key)

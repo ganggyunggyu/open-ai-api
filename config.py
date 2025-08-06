@@ -8,6 +8,7 @@ load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
 anthropic_api_key = os.getenv("ANTHROPIC_API_KEY")
 upstage_api_key = os.getenv("UPSTAGE_API_KEY")
+MONGODB_URI = os.getenv('MONGODB_URI')
 
 if not openai_api_key:
     raise RuntimeError("OPENAI_API_KEY가 설정되어 있지 않습니다.")

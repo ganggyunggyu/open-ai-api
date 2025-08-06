@@ -6,17 +6,19 @@ def send_prompt_to_gpt(keyword):
     
     try:
         response = openai_client.chat.completions.create(
-            model='gpt-4.1-2025-04-14',
+            model='gpt-4o',
             messages=[
                 {"role": "system", "content": KO_PROMPT},
                 {"role": "user", "content": f"""
+                 ---
                  키워드: {keyword} 
                  ---
                  참고 문서: {ref}
 """}
             ],
-            temperature=0.7,
-            top_p=0.95
+            temperature=0.0,
+            top_p=1.0,
+            presence_penalty=0.0
         )
         return response.choices[0].message.content
     except Exception as e:

@@ -6,10 +6,12 @@ def send_prompt_to_gpt(keyword):
     
     try:
         response = openai_client.chat.completions.create(
-            model='gpt-4o',
+            model='gpt-4.1-2025-04-14',
             messages=[
                 {"role": "system", "content": KO_PROMPT},
                 {"role": "user", "content": f"""
+                 
+                 3000단어 이상 필수
                  ---
                  키워드: {keyword} 
                  ---
